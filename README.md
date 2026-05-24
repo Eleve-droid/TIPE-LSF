@@ -1,4 +1,4 @@
-# LSF Alphabet Recognition — TIPE
+<img width="382" height="132" alt="images" src="https://github.com/user-attachments/assets/9a710a8a-d13f-4aca-9f8c-104c9800bc4e" /># LSF Alphabet Recognition — TIPE
 
 Reconnaissance en temps réel de l'alphabet de la **Langue des Signes Française (LSF)** à partir d'un flux vidéo, via un algorithme **KNN** et **MediaPipe**.
 
@@ -40,17 +40,8 @@ TIPE-LSF/
 
 MediaPipe Hands détecte **21 points clés** (landmarks) sur la main, chacun avec des coordonnées (x, y) normalisées.
 
-```
-                8   12  16  20
-                |   |   |   |
-            7   11  15  19
-        6   10  14  18
-    5   9   13  17
-        4
-        3
-        2
-    1 (poignet)
-```
+<img width="382" height="132" alt="images" src="https://github.com/user-attachments/assets/0e8d96ff-9544-4da6-962d-6cde7160e1c6" />
+
 
 Ces 21 × 2 = **42 valeurs** constituent le vecteur de features.
 

@@ -9,7 +9,7 @@ Projet réalisé dans le cadre du TIPE (Travaux d'Initiative Personnelle Encadr�
 ## Démonstration
 
 <p align="center">
-  <img src="images/demo_detection.jpg" width="700" alt="Détection des landmarks">
+  <img src="images/realtime_prediction.jpg" width="700" alt="Détection des landmarks">
 </p>
 
 Le programme détecte la main en temps réel, extrait les **21 landmarks** articulaires via MediaPipe, et prédit la lettre signée.
@@ -67,7 +67,7 @@ MediaPipe Hands détecte **21 points clés** (landmarks) sur la main, chacun ave
 Ces 21 × 2 = **42 valeurs** constituent le vecteur de features.
 
 <p align="center">
-  <img src="images/realtime_prediction.jpg" width="700" alt="Prédiction temps réel">
+  <img src="images/demo_detection.jpg" width="700" alt="Prédiction temps réel">
 </p>
 
 ### 2. Normalisation

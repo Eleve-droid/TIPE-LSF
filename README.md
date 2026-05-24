@@ -1,12 +1,16 @@
-<img width="382" height="132" alt="images" src="https://github.com/user-attachments/assets/9a710a8a-d13f-4aca-9f8c-104c9800bc4e" /># LSF Alphabet Recognition — TIPE
+# 🤟 LSF Alphabet Recognition — TIPE
 
 Reconnaissance en temps réel de l'alphabet de la **Langue des Signes Française (LSF)** à partir d'un flux vidéo, via un algorithme **KNN** et **MediaPipe**.
 
-Projet réalisé dans le cadre du TIPE (Travaux d'Initiative Personnelle Encadrés) en Classe Préparatoire TSI — Lycée Louis Rascol, Albi.
+Projet réalisé dans le cadre du TIPE (Travaux d'Initiative Personnelle Encadrés) en CPGE TSI.
 
 ---
 
 ## Démonstration
+
+<p align="center">
+  <img src="images/demo_detection.jpg" width="700" alt="Détection des landmarks">
+</p>
 
 Le programme détecte la main en temps réel, extrait les **21 landmarks** articulaires via MediaPipe, et prédit la lettre signée.
 
@@ -16,18 +20,26 @@ Le programme détecte la main en temps réel, extrait les **21 landmarks** artic
 
 ## Architecture du projet
 
-```
+```text
+
 TIPE-LSF/
+│
 ├── data/
-│   └── landmarks.csv        # Dataset : coordonnées landmarks + labels
+│   └── landmarks.csv
+│
+├── images/
+│   ├── demo_detection.png
+│   ├── realtime_prediction.png
+│   └── confusion_matrix.png
+│
 ├── models/
-│   ├── knn_lsf.pkl          # Modèle KNN entraîné
-│   ├── scaler_lsf.pkl       # StandardScaler
-│   └── confusion_matrix.png # Matrice de confusion (générée par train.py)
-├── capture_hand_data.py     # Collecte de nouvelles données via webcam
-├── train.py                 # Entraînement du modèle KNN
-├── evaluate.py              # Évaluation détaillée (rapport + matrice confusion)
-├── prediction.py            # Reconnaissance en temps réel (webcam)
+│   ├── knn_lsf.pkl
+│   └── scaler_lsf.pkl
+│
+├── capture_hand_data.py
+├── train.py
+├── evaluate.py
+├── prediction.py
 ├── requirements.txt
 └── README.md
 ```
@@ -40,10 +52,23 @@ TIPE-LSF/
 
 MediaPipe Hands détecte **21 points clés** (landmarks) sur la main, chacun avec des coordonnées (x, y) normalisées.
 
-<img width="382" height="132" alt="images" src="https://github.com/user-attachments/assets/0e8d96ff-9544-4da6-962d-6cde7160e1c6" />
-
+```
+                8   12  16  20
+                |   |   |   |
+            7   11  15  19
+        6   10  14  18
+    5   9   13  17
+        4
+        3
+        2
+    1 (poignet)
+```
 
 Ces 21 × 2 = **42 valeurs** constituent le vecteur de features.
+
+<p align="center">
+  <img src="images/realtime_prediction.jpg" width="700" alt="Prédiction temps réel">
+</p>
 
 ### 2. Normalisation
 
@@ -135,20 +160,27 @@ Le fichier `data/landmarks.csv` contient les landmarks extraits d'images de l'al
 | Features | 42 (21 landmarks × x,y) |
 | Classes | A, B, C, D, E |
 
+### Matrice de confusion
+
+<p align="center">
+  <img src="images/confusion_matrix.jpg" width="600" alt="Matrice de confusion">
+</p>
+
 ---
 
-## Technologies
+## 🔬 Technologies utilisées
 
 - **Python 3.10+**
-- [MediaPipe](https://mediapipe.dev/) — détection des landmarks de la main
-- [scikit-learn](https://scikit-learn.org/) — KNN, StandardScaler
-- [OpenCV](https://opencv.org/) — capture et traitement vidéo
-- [pandas](https://pandas.pydata.org/) / [NumPy](https://numpy.org/) — manipulation des données
+- **MediaPipe** — détection des landmarks de la main
+- **OpenCV** — traitement vidéo temps réel
+- **scikit-learn** — KNN, StandardScaler
+- **NumPy / pandas** — manipulation des données
+- **Matplotlib / Seaborn** — visualisation et matrice de confusion
 
 ---
 
-## Auteur
+## 👨‍💻 Auteur
 
 **TOURAB Ilyas**  
-Apprenti Ingénieur — Génie Informatique, spécialité IA & Science des Données  
+Étudiant ingénieur — Génie Informatique & Intelligence Artificielle  
 Université de Technologie de Compiègne (UTC)
